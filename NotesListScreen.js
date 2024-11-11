@@ -45,10 +45,10 @@ const NotesListScreen = ({ navigation }) => {
   };
 
   const filteredNotes = notes.filter(note =>
-    note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    note.content.toLowerCase().includes(searchQuery.toLowerCase())
+    (note.title ? note.title.toLowerCase().includes(searchQuery.toLowerCase()) : false) ||
+    (note.content ? note.content.toLowerCase().includes(searchQuery.toLowerCase()) : false)
   );
-
+  
   const renderNote = ({ item }) => (
     <TouchableOpacity
       style={styles.noteItem}
